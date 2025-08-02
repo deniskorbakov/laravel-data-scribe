@@ -1,0 +1,10 @@
+version: '3.7'
+services:
+  app:
+    container_name: scribe-plugin
+    build:
+      context: .docker
+    volumes:
+      - ./:/app
+    tty: true
+    stdin_open: true

@@ -1,0 +1,24 @@
+name: Question
+description: Ask or suggest something.
+labels: ["question", "triage"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Example description
+  - type: input
+    id: pkg_version
+    attributes:
+      label: Package name version
+      description: Run `composer show -v | grep package/name`.
+      placeholder: "example: 1.0.0"
+    validations:
+      required: true
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      placeholder:
+    validations:
+      required: true

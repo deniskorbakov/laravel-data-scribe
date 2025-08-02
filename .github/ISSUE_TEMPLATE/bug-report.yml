@@ -1,0 +1,35 @@
+name: Bug report
+description: |
+  Something didn't work as expected? Create a report to help us improve.
+labels: [ "bug", "triage" ]
+assignees: [ ]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Example description
+  - type: input
+    id: pkg_version
+    attributes:
+      label: Package name version
+      description: Run `composer show -v | grep package/name`.
+      placeholder: "example: 1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: php_version
+    attributes:
+      label: PHP version
+      description: Run `php -v`.
+      placeholder: "example: 8.4"
+    validations:
+      required: true
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: |
+        Example description
+      placeholder: I ran `php artisan migration:fresh` on prod, and then...
+    validations:
+      required: true
