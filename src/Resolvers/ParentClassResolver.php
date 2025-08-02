@@ -13,7 +13,7 @@ final readonly class ParentClassResolver
 
     public function parentClassName(): string
     {
-        return get_parent_class($this->className) ?? "";
+        return get_parent_class($this->className) ?? '';
     }
 
     public function isInstanceOf(string $className): bool
