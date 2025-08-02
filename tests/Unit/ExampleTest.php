@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Unit;
 
-use DenisKorbakov\SkeletonPhpDocker\Example;
+use DenisKorbakov\LaravelDataScribe\Example;
 use Tests\TestCase;
 
 uses(TestCase::class);

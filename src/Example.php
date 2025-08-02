@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DenisKorbakov\SkeletonPhpDocker;
+namespace DenisKorbakov\LaravelDataScribe;
 
 final class Example
 {
