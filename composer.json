@@ -1,7 +1,12 @@
 {
     "name": "deniskorbakov/laravel-data-scribe",
     "description": "A Scribe Plugin to generate API doc from spatie/laravel-data",
-    "keywords": ["scribe", "laravel-data", "plugin", "php"],
+    "keywords": [
+        "scribe",
+        "laravel-data",
+        "plugin",
+        "php"
+    ],
     "type": "libarary",
     "license": "MIT",
     "authors": [
@@ -11,7 +16,9 @@
         }
     ],
     "require": {
-        "php": ">=8.2"
+        "php": ">=8.2",
+        "knuckleswtf/scribe": "^5.3",
+        "spatie/laravel-data": "^4.17"
     },
     "autoload": {
         "psr-4": {
@@ -20,7 +27,10 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "App\\": "workbench/app/",
+            "Database\\Factories\\": "workbench/database/factories/",
+            "Database\\Seeders\\": "workbench/database/seeders/"
         }
     },
     "minimum-stability": "stable",
@@ -34,14 +44,31 @@
         ],
         "phpstan": "phpstan analyse --memory-limit=2G",
         "rector": "rector",
-        "cs": "phpcs"
+        "cs": "phpcs",
+        "post-autoload-dump": [
+            "@clear",
+            "@prepare"
+        ],
+        "clear": "@php vendor/bin/testbench package:purge-skeleton --ansi",
+        "prepare": "@php vendor/bin/testbench package:discover --ansi",
+        "build": "@php vendor/bin/testbench workbench:build --ansi",
+        "serve": [
+            "Composer\\Config::disableProcessTimeout",
+            "@build",
+            "@php vendor/bin/testbench serve --ansi"
+        ],
+        "test": [
+            "@clear",
+            "@php vendor/bin/pest"
+        ]
     },
     "require-dev": {
         "pestphp/pest": "^3.8",
         "phpstan/phpstan": "^2.1",
         "rector/rector": "*",
         "squizlabs/php_codesniffer": "^3.13",
-        "slevomat/coding-standard": "^8.20"
+        "slevomat/coding-standard": "^8.20",
+        "orchestra/testbench": "^10.4"
     },
     "config": {
         "allow-plugins": {
