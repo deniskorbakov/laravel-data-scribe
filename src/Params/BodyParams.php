@@ -22,6 +22,10 @@ final class BodyParams
 
     public function generate(): array
     {
+        if (!class_exists($this->className)) {
+            return [];
+        }
+
         $parameters = $this->getParametersFromValidationRules(
             (new ValidationRules($this->className))->rules()
         );
