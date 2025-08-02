@@ -1,7 +1,7 @@
 {
-    "name": "deniskorbakov/skeleton-php-docker",
-    "description": "A skeleton php libs with docker",
-    "keywords": ["php", "skeleton", "package", "docker"],
+    "name": "deniskorbakov/laravel-data-scribe",
+    "description": "A Scribe Plugin to generate API doc from spatie/laravel-data",
+    "keywords": ["scribe", "laravel-data", "plugin", "php"],
     "type": "libarary",
     "license": "MIT",
     "authors": [
@@ -15,7 +15,7 @@
     },
     "autoload": {
         "psr-4": {
-            "DenisKorbakov\\SkeletonPhpDocker\\": "src/"
+            "DenisKorbakov\\LaravelDataScribe\\": "src/"
         }
     },
     "autoload-dev": {
