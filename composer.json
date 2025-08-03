@@ -46,6 +46,7 @@
         "phpstan": "phpstan analyse --memory-limit=2G",
         "rector": "rector",
         "cs": "phpcs",
+        "cs-fix": "phpcbf",
         "post-autoload-dump": [
             "@clear",
             "@prepare"
