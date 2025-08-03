@@ -16,7 +16,7 @@ final readonly class ParentClassResolver
     /** @return class-string Parent class name or empty string if none */
     public function parentClassName(): string
     {
-        return get_parent_class($this->className) ?? '';
+        return get_parent_class($this->className) ?: '';
     }
 
     /**
