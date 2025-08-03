@@ -1,4 +1,4 @@
-FROM php:8.4-cli-alpine
+FROM php:8.2-cli-alpine
 
 COPY php.ini /usr/local/etc/php/php.ini
 
