@@ -15,6 +15,7 @@ use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
+use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
 use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
@@ -64,6 +65,7 @@ return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->skip([
         CompactToVariablesRector::class,
         RemoveEmptyClassMethodRector::class,
+        RemoveNonExistingVarAnnotationRector::class,
     ]);
 
     $rectorConfig->sets([
@@ -73,5 +75,5 @@ return static function (RectorConfig $rectorConfig): void {
         SetList::PRIVATIZATION,
     ]);
 
-    $rectorConfig->phpVersion(PhpVersion::PHP_84);
+    $rectorConfig->phpVersion(PhpVersion::PHP_82);
 };
