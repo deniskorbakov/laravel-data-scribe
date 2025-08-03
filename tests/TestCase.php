@@ -13,4 +13,24 @@ abstract class TestCase extends BaseTestCase
     {
         return [LaravelDataServiceProvider::class];
     }
+
+    protected function getAttributeValidationRules(): array
+    {
+        return include __DIR__ . '/Fixtures/ValidationsRules/AttributeValidationRules.php';
+    }
+
+    protected function getCustomAttributeValidationRules(): array
+    {
+        return include __DIR__ . '/Fixtures/ValidationsRules/CustomAttributeValidationRules.php';
+    }
+
+    protected function getManualValidationRules(): array
+    {
+        return include __DIR__ . '/Fixtures/ValidationsRules/ManualValidationRules.php';
+    }
+
+    protected function getNoValidationRules(): array
+    {
+        return include __DIR__ . '/Fixtures/ValidationsRules/NoValidationRules.php';
+    }
 }
