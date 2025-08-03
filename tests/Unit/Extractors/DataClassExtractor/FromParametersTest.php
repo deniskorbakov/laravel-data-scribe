@@ -24,7 +24,7 @@ test('extract class laravel data from param ParentClassLaravelData', function ()
 });
 
 test('extract class laravel data from param from WithoutParentClassLaravelData', function () {
-    $route = new Route('post', '/api/posts', fn (WithoutParentClassLaravelData $parentClassLaravelData) => null);
+    $route = new Route('', '', fn (WithoutParentClassLaravelData $parentClassLaravelData) => null);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new LaravelDataExtractor($extractMethod->method);
