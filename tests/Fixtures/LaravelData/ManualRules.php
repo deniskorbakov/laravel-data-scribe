@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures\LaravelData;
 
-final class ManualRules
+use Spatie\LaravelData\Data;
+
+final class ManualRules extends Data
 {
     public function __construct(
         public string $name,

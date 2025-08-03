@@ -4,9 +4,10 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures\LaravelData;
 
+use Spatie\LaravelData\Data;
 use Tests\Fixtures\Enums\ExampleEnum;
 
-final class NoRules
+final class NoRules extends Data
 {
     public function __construct(
         public string $firstName,
