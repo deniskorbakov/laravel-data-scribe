@@ -25,7 +25,7 @@ final class BodyParams
     }
 
     /**
-     * @return array<string, mixed> Normalized parameters with validation rules
+     * @return array<string, array<string, mixed>> Normalized parameters with validation rules
      * @see ValidationRules Used to extract the base validation rules
      */
     public function generate(): array
@@ -34,10 +34,12 @@ final class BodyParams
             return [];
         }
 
+        /** @var array<string, array<string, mixed>> $parameters */
         $parameters = $this->getParametersFromValidationRules(
             (new ValidationRules($this->className))->rules()
         );
 
+        /** @var array<string, array<string, mixed>> */
         return $this->normaliseArrayAndObjectParameters($parameters);
     }
 }

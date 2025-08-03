@@ -16,9 +16,10 @@ final readonly class ValidationRules
     ) {
     }
 
-    /** @return array Validation rules from the Data class */
+    /** @return array<string, array<int, mixed>> Validation rules from the Data class */
     public function rules(): array
     {
+        /** @var array<string, array<int, mixed>> */
         return (new ParentClassResolver($this->className))
             ->isInstanceOf(Data::class) ? $this->className::getValidationRules([]) : [];
     }

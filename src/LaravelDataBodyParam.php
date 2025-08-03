@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace DenisKorbakov\LaravelDataScribe;
 
-use DenisKorbakov\LaravelDataScribe\Extractors\LaravelDataExtractor;
+use DenisKorbakov\LaravelDataScribe\Extractors\ParametersExtractor;
 use DenisKorbakov\LaravelDataScribe\Params\BodyParams;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Knuckles\Scribe\Extracting\ParsesValidationRules;
 use Knuckles\Scribe\Extracting\Strategies\Strategy;
+use ReflectionParameter;
+use Spatie\LaravelData\Data;
 
 /** Generates Laravel Data request body parameters from endpoint data */
 final class LaravelDataBodyParam extends Strategy
@@ -17,11 +19,20 @@ final class LaravelDataBodyParam extends Strategy
 
     /**
      * @param ExtractedEndpointData $endpointData Endpoint method and parameters
-     * @return array|null Generated body params or null
+     * @param array<string, mixed> $settings
+     * @return ?array<string, mixed> Generated body params or null
      */
     public function __invoke(ExtractedEndpointData $endpointData, array $settings = []): ?array
     {
-        $laravelDataClass = (new LaravelDataExtractor($endpointData->method))->fromParameters();
+        /** @var ReflectionParameter[] $parameters */
+        $parameters = $endpointData->method?->getParameters();
+
+        /** @var class-string<Data> $laravelDataClass */
+        $laravelDataClass = (new ParametersExtractor($parameters))->extract();
+
+        if (empty($laravelDataClass)) {
+            return null;
+        }
 
         return (new BodyParams($laravelDataClass, $this->config))->generate();
     }
