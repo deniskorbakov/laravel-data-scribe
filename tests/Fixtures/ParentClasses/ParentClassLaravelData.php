@@ -8,5 +8,4 @@ use Spatie\LaravelData\Data;
 
 final class ParentClassLaravelData extends Data
 {
-
 }

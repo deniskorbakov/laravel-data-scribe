@@ -12,8 +12,8 @@ use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
 
 mutates(BodyParams::class);
 
-test('generate doc body params from AttributeRules', function () {
-    $bodyParams = new BodyParams(AttributeRules::class, new DocumentationConfig);
+test('generate doc body params from AttributeRules', function (): void {
+    $bodyParams = new BodyParams(AttributeRules::class, new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);
@@ -21,8 +21,8 @@ test('generate doc body params from AttributeRules', function () {
     expect($result)->toEqual($this->getParamsAttributeRules());
 });
 
-test('generate doc body params from CustomAttributeRules', function () {
-    $bodyParams = new BodyParams(CustomAttributeRules::class, new DocumentationConfig);
+test('generate doc body params from CustomAttributeRules', function (): void {
+    $bodyParams = new BodyParams(CustomAttributeRules::class, new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);
@@ -30,8 +30,8 @@ test('generate doc body params from CustomAttributeRules', function () {
     expect($result)->toEqual($this->getParamsCustomAttributeRules());
 });
 
-test('generate doc body params from ManualRules', function () {
-    $bodyParams = new BodyParams(ManualRules::class, new DocumentationConfig);
+test('generate doc body params from ManualRules', function (): void {
+    $bodyParams = new BodyParams(ManualRules::class, new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);
@@ -39,8 +39,8 @@ test('generate doc body params from ManualRules', function () {
     expect($result)->toEqual($this->getParamsManualRules());
 });
 
-test('generate doc body params from NoRules', function () {
-    $bodyParams = new BodyParams(NoRules::class, new DocumentationConfig);
+test('generate doc body params from NoRules', function (): void {
+    $bodyParams = new BodyParams(NoRules::class, new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);
@@ -48,8 +48,8 @@ test('generate doc body params from NoRules', function () {
     expect($result)->toEqual($this->getParamsNoRules());
 });
 
-test('generate doc body params from WithoutParentClassLaravelData', function () {
-    $bodyParams = new BodyParams(WithoutParentClassLaravelData::class, new DocumentationConfig);
+test('generate doc body params from WithoutParentClassLaravelData', function (): void {
+    $bodyParams = new BodyParams(WithoutParentClassLaravelData::class, new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);
@@ -57,8 +57,8 @@ test('generate doc body params from WithoutParentClassLaravelData', function () 
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from none exists class', function () {
-    $bodyParams = new BodyParams('', new DocumentationConfig);
+test('generate doc body params from none exists class', function (): void {
+    $bodyParams = new BodyParams('', new DocumentationConfig());
     $result = $bodyParams->generate();
 
     $this->deleteExampleKey($result);

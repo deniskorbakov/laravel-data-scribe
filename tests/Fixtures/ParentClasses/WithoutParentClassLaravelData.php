@@ -6,5 +6,4 @@ namespace Tests\Fixtures\ParentClasses;
 
 final class WithoutParentClassLaravelData
 {
-
 }

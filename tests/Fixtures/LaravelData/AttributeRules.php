@@ -31,43 +31,30 @@ final class AttributeRules extends Data
     public function __construct(
         #[Required, Min(1), Max(100)]
         public string $name,
-
         #[Email]
         public string $email,
-
         #[Numeric, Between(0, 100)]
         public float $price,
-
         #[IntegerType, Min(18)]
         public int $age,
-
         #[StringType, Size(10)]
         public string $code,
-
         #[BooleanType]
         public bool $active,
-
         #[ArrayType]
         public array $items,
-
         #[Date, After('today')]
         public string $start_date,
-
         #[Date, Before('start_date')]
         public string $end_date,
-
         #[In(['active', 'inactive', 'pending'])]
         public string $status,
-
         #[NotIn(['banned', 'suspended'])]
         public string $account_type,
-
         #[Sometimes, Regex('/^[A-Z][a-z]+$/')]
         public ?string $proper_name,
-
         #[Url]
         public string $website,
-
         #[Uuid]
         public string $identifier,
     ) {

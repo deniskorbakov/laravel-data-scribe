@@ -9,7 +9,7 @@ use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
 
 mutates(ParentClassResolver::class);
 
-test('is instance of Laravel data', function () {
+test('is instance of Laravel data', function (): void {
     $parentClassResolver = new ParentClassResolver(ParentClassLaravelData::class);
 
     $result = $parentClassResolver->isInstanceOf(Data::class);
@@ -17,7 +17,7 @@ test('is instance of Laravel data', function () {
     expect($result)->toBeTrue();
 });
 
-test('is not instance of Laravel data', function () {
+test('is not instance of Laravel data', function (): void {
     $parentClassResolver = new ParentClassResolver(WithoutParentClassLaravelData::class);
 
     $result = $parentClassResolver->isInstanceOf(Data::class);

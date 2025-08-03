@@ -9,7 +9,7 @@ use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
 
 mutates(ParentClassResolver::class);
 
-test('get parent class name', function () {
+test('get parent class name', function (): void {
     $parentClassResolver = new ParentClassResolver(ParentClassLaravelData::class);
 
     $result = $parentClassResolver->parentClassName();
@@ -17,11 +17,10 @@ test('get parent class name', function () {
     expect($result)->toBe(Data::class);
 });
 
-test('get empty string', function () {
+test('get empty string', function (): void {
     $parentClassResolver = new ParentClassResolver(WithoutParentClassLaravelData::class);
 
     $result = $parentClassResolver->parentClassName();
 
     expect($result)->toBeEmpty();
 });
-

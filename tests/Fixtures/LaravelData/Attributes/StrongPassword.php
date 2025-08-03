@@ -17,4 +17,3 @@ final class StrongPassword extends CustomValidationAttribute
         return new StrongPasswordRule();
     }
 }
-

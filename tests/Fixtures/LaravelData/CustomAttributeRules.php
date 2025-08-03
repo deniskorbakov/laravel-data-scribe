@@ -15,6 +15,6 @@ final class CustomAttributeRules extends Data
         public string $phone,
         #[StrongPassword]
         public string $password,
-    ){
+    ) {
     }
 }

@@ -11,8 +11,6 @@ final class RequestRules extends Request
 {
     /**
      * Determine if the user is authorized to make this request.
-     *
-     * @return bool
      */
     public function authorize(): bool
     {
@@ -25,7 +23,6 @@ final class RequestRules extends Request
      * @return array<string, ValidationRule|array|string>
      */
     public function rules(): array
-
     {
         return [
             'title' => 'required|unique:posts|max:255',

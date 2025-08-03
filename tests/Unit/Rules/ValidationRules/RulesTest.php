@@ -11,38 +11,37 @@ use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
 
 mutates(ValidationRules::class);
 
-test('get validation rules from AttributeRules', function () {
+test('get validation rules from AttributeRules', function (): void {
     $validationRules = new ValidationRules(AttributeRules::class);
     $result = $validationRules->rules();
 
     expect($result)->toEqual($this->getAttributeValidationRules());
 });
 
-test('get validation rules from CustomAttributeRules', function () {
+test('get validation rules from CustomAttributeRules', function (): void {
     $validationRules = new ValidationRules(CustomAttributeRules::class);
     $result = $validationRules->rules();
 
     expect($result)->toEqual($this->getCustomAttributeValidationRules());
 });
 
-test('get validation rules from ManualRules', function () {
+test('get validation rules from ManualRules', function (): void {
     $validationRules = new ValidationRules(ManualRules::class);
     $result = $validationRules->rules();
 
     expect($result)->toEqual($this->getManualValidationRules());
 });
 
-test('get validation rules from NoRules', function () {
+test('get validation rules from NoRules', function (): void {
     $validationRules = new ValidationRules(NoRules::class);
     $result = $validationRules->rules();
 
     expect($result)->toEqual($this->getNoValidationRules());
 });
 
-test('get validation rules from WithoutParentClassLaravelData', function () {
+test('get validation rules from WithoutParentClassLaravelData', function (): void {
     $validationRules = new ValidationRules(WithoutParentClassLaravelData::class);
     $result = $validationRules->rules();
 
     expect($result)->toBeEmpty();
 });
-
