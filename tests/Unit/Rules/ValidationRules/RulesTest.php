@@ -43,6 +43,6 @@ test('get validation rules from WithoutParentClassLaravelData', function () {
     $validationRules = new ValidationRules(WithoutParentClassLaravelData::class);
     $result = $validationRules->rules();
 
-    expect($result)->toEqual([]);
+    expect($result)->toBeEmpty();
 });
 

@@ -22,6 +22,6 @@ test('get empty string', function () {
 
     $result = $parentClassResolver->parentClassName();
 
-    expect($result)->toBe('');
+    expect($result)->toBeEmpty();
 });
 
