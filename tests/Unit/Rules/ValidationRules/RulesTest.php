@@ -15,28 +15,28 @@ test('get validation rules from AttributeRules', function () {
     $validationRules = new ValidationRules(AttributeRules::class);
     $result = $validationRules->rules();
 
-    expect($result)->toEqual(AttributeRules::getValidationRules([]));
+    expect($result)->toEqual($this->getAttributeValidationRules());
 });
 
 test('get validation rules from CustomAttributeRules', function () {
     $validationRules = new ValidationRules(CustomAttributeRules::class);
     $result = $validationRules->rules();
 
-    expect($result)->toEqual(CustomAttributeRules::getValidationRules([]));
+    expect($result)->toEqual($this->getCustomAttributeValidationRules());
 });
 
 test('get validation rules from ManualRules', function () {
     $validationRules = new ValidationRules(ManualRules::class);
     $result = $validationRules->rules();
 
-    expect($result)->toEqual(ManualRules::getValidationRules([]));
+    expect($result)->toEqual($this->getManualValidationRules());
 });
 
 test('get validation rules from NoRules', function () {
     $validationRules = new ValidationRules(NoRules::class);
     $result = $validationRules->rules();
 
-    expect($result)->toEqual(NoRules::getValidationRules([]));
+    expect($result)->toEqual($this->getNoValidationRules());
 });
 
 test('get validation rules from WithoutParentClassLaravelData', function () {
