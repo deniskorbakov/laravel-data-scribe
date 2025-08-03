@@ -6,10 +6,10 @@ use DenisKorbakov\LaravelDataScribe\LaravelDataBodyParam;
 use Illuminate\Routing\Route;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Knuckles\Scribe\Tools\DocumentationConfig;
-use Tests\Fixtures\LaravelData\CreateLaravelData;
+use Tests\Fixtures\LaravelData\AttributeRules;
 
 test('success - generate body params from laravel/data', function (): void {
-    $route = new Route('post', '/api/posts', fn (CreateLaravelData $dataStub) => response()->noContent());
+    $route = new Route('post', '/api/posts', fn (AttributeRules $dataStub) => response()->noContent());
 
     $example = new LaravelDataBodyParam(new DocumentationConfig);
 
