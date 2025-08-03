@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace DenisKorbakov\LaravelDataScribe;
 
-use DenisKorbakov\LaravelDataScribe\Extractors\DataClassExtractor;
+use DenisKorbakov\LaravelDataScribe\Extractors\LaravelDataExtractor;
 use DenisKorbakov\LaravelDataScribe\Params\BodyParams;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Knuckles\Scribe\Extracting\ParsesValidationRules;
@@ -21,7 +21,7 @@ final class LaravelDataBodyParam extends Strategy
      */
     public function __invoke(ExtractedEndpointData $endpointData, array $settings = []): ?array
     {
-        $laravelDataClass = (new DataClassExtractor($endpointData->method))->fromParameters();
+        $laravelDataClass = (new LaravelDataExtractor($endpointData->method))->fromParameters();
 
         return (new BodyParams($laravelDataClass, $this->config))->generate();
     }

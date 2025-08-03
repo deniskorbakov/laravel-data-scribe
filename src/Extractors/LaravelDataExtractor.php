@@ -9,7 +9,7 @@ use ReflectionFunctionAbstract;
 use Spatie\LaravelData\Data;
 
 /** Extracts Laravel Data class from method parameters */
-final readonly class DataClassExtractor
+final readonly class LaravelDataExtractor
 {
     /** @param ReflectionFunctionAbstract|null $method Method to analyze */
     public function __construct(
