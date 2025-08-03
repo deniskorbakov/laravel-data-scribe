@@ -5,23 +5,30 @@ declare(strict_types=1);
 namespace DenisKorbakov\LaravelDataScribe\Extractors;
 
 use DenisKorbakov\LaravelDataScribe\Resolvers\ParentClassResolver;
-use ReflectionFunctionAbstract;
+use ReflectionNamedType;
+use ReflectionParameter;
 use Spatie\LaravelData\Data;
 
 /** Extracts Laravel Data class from method parameters */
-final readonly class LaravelDataExtractor
+final readonly class ParametersExtractor
 {
-    /** @param ReflectionFunctionAbstract|null $method Method to analyze */
+    /** @param ReflectionParameter[] $parameters Method to analyze */
     public function __construct(
-        public ?ReflectionFunctionAbstract $method,
+        public array $parameters,
     ) {
     }
 
-    /** @return class-string<Data> Found Data class name or empty string */
-    public function fromParameters(): string
+    /** @return string Found Data class name or empty string */
+    public function extract(): string
     {
-        foreach ($this->method->getParameters() as $argument) {
-            $nameArgument = $argument->getType()->getName();
+        foreach ($this->parameters as $argument) {
+            $type = $argument->getType();
+
+            if (!$type instanceof ReflectionNamedType) {
+                continue;
+            }
+
+            $nameArgument = $type->getName();
 
             if (! class_exists($nameArgument)) {
                 continue;
