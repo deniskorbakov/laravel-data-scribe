@@ -8,14 +8,16 @@ use DenisKorbakov\LaravelDataScribe\Resolvers\ParentClassResolver;
 use ReflectionFunctionAbstract;
 use Spatie\LaravelData\Data;
 
+/** Extracts Laravel Data class from method parameters */
 final readonly class DataClassExtractor
 {
+    /** @param ReflectionFunctionAbstract|null $method Method to analyze */
     public function __construct(
         public ?ReflectionFunctionAbstract $method,
-    ){
+    ) {
     }
 
-    /** @return class-string<Data> */
+    /** @return class-string<Data> Found Data class name or empty string */
     public function fromParameters(): string
     {
         foreach ($this->method->getParameters() as $argument) {

@@ -6,6 +6,7 @@ namespace DenisKorbakov\LaravelDataScribe\Rules;
 
 use Spatie\LaravelData\Data;
 
+/** Provides validation rules for a Laravel Data class */
 final readonly class ValidationRules
 {
     /** @param class-string<Data> $className */
@@ -14,6 +15,7 @@ final readonly class ValidationRules
     ) {
     }
 
+    /** @return array Validation rules from the Data class */
     public function rules(): array
     {
         return $this->className::getValidationRules([]);
