@@ -7,6 +7,8 @@ use Spatie\LaravelData\Data;
 use Tests\Fixtures\ParentClasses\ParentClassLaravelData;
 use Tests\Fixtures\ParentClasses\WithoutParentClass;
 
+mutates(ParentClassResolver::class);
+
 test('is instance of Laravel data', function () {
     $parentClassResolver = new ParentClassResolver(ParentClassLaravelData::class);
 
