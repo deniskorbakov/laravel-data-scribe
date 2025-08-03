@@ -21,12 +21,16 @@ final readonly class LaravelDataExtractor
     public function fromParameters(): string
     {
         foreach ($this->method->getParameters() as $argument) {
-            $nameClassArgument = $argument->getType()->getName();
+            $nameArgument = $argument->getType()->getName();
 
-            $parentResolver = new ParentClassResolver($nameClassArgument);
+            if (! class_exists($nameArgument)) {
+                continue;
+            }
+
+            $parentResolver = new ParentClassResolver($nameArgument);
 
             if ($parentResolver->isInstanceOf(Data::class)) {
-                return $nameClassArgument;
+                return $nameArgument;
             }
         }
 
