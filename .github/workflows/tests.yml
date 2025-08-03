@@ -27,8 +27,11 @@ jobs:
       - name: Install dependencies
         run: composer update
 
-      - name: Test code
+      - name: Tests code
         run: composer tests
 
-      - name: Test coverage
+      - name: Tests coverage
         run: composer tests-coverage
+
+      - name: Tests mutation
+        run: composer tests-mutation

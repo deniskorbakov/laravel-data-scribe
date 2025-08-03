@@ -27,4 +27,8 @@ test:
 
 # command for run tests coverage
 test-coverage:
-	docker exec -i scribe-plugin composer tests
+	docker exec -i scribe-plugin composer tests-coverage
+
+# command for run tests mutation
+test-mutation:
+	docker exec -i scribe-plugin composer tests-mutation
