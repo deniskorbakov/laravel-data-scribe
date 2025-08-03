@@ -14,6 +14,32 @@ abstract class TestCase extends BaseTestCase
         return [LaravelDataServiceProvider::class];
     }
 
+    /** @param array<string, mixed> $array */
+    protected function deleteExampleKey(array &$array): void
+    {
+        data_forget($array, '*.example');
+    }
+
+    protected function getParamsAttributeRules(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsAttributeRules.php';
+    }
+
+    protected function getParamsCustomAttributeRules(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsCustomAttributeRules.php';
+    }
+
+    protected function getParamsManualRules(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsManualRules.php';
+    }
+
+    protected function getParamsNoRules(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsNoRules.php';
+    }
+
     protected function getAttributeValidationRules(): array
     {
         return include __DIR__ . '/Fixtures/ValidationsRules/AttributeValidationRules.php';
