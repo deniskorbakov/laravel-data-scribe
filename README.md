@@ -10,12 +10,12 @@ This package is intended for [scribe](https://github.com/knuckleswtf/scribe) bus
 
 By default, [scribe](https://github.com/knuckleswtf/scribe) cannot generate documentation from [laravel-data](https://github.com/spatie/laravel-data), so I propose solutions in the form of this package with plugins
 
-| Scribe Support              | Description                                            |     Plugin Name      | Status |
-|:----------------------------|:-------------------------------------------------------|:--------------------:|:------:|
-| ``Body Parameters``         | Generate Body Params from laravel-data                 | LaravelDataBodyParam |   ✅    |
-| ``Responses``               | Generate Response from laravel-data with various typed |          🚫          |   ❌    |
-| ``Url Parameters``          | Support Parameters along with laravel-data             |          🚫          |   ❌    |
-| ``Custom Validation Rules`` | Support Custom Rules in laravel-data                   |          🚫          |   ❌    |
+| Scribe Support        | Description                                            |     Plugin Name      | Status |
+|:----------------------|:-------------------------------------------------------|:--------------------:|:------:|
+| ``Body Parameters``   | Generate Body Params from laravel-data                 | LaravelDataBodyParam |   ✅    |
+| ``Responses``         | Generate Response from laravel-data with various typed |          🚫          |   ❌    |
+| ``Url Parameters``    | Support Parameters along with laravel-data             |          🚫          |   ❌    |
+| ``Custom Validation`` | Support Custom Rules in laravel-data                   |          🚫          |   ❌    |
 
 ## 📝 Getting Started
 
