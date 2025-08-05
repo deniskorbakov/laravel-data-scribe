@@ -6,7 +6,7 @@
 <a href="https://packagist.org/packages/deniskorbakov/laravel-data-scribe"><img alt="Latest Version" src="https://img.shields.io/packagist/v/deniskorbakov/laravel-data-scribe"></a>
 <a href="https://packagist.org/packages/deniskorbakov/laravel-data-scribe"><img alt="License" src="https://img.shields.io/packagist/l/deniskorbakov/laravel-data-scribe"></a>
 
-This package is intended for [scribe](https://github.com/knuckleswtf/scribe) business with [laravel-data](https://github.com/spatie/laravel-data)
+[This package](https://packagist.org/packages/deniskorbakov/laravel-data-scribe) is intended for [scribe](https://github.com/knuckleswtf/scribe) business with [laravel-data](https://github.com/spatie/laravel-data)
 
 By default, [scribe](https://github.com/knuckleswtf/scribe) cannot generate documentation from [laravel-data](https://github.com/spatie/laravel-data), so I propose solutions in the form of this package with plugins
 
