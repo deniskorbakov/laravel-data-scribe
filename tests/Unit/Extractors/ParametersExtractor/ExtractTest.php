@@ -35,6 +35,17 @@ test('extract class laravel data from param from WithoutParentClassLaravelData',
     expect($result)->toBeEmpty();
 });
 
+test('extract class laravel data from param from empty arg route', function (): void {
+    $route = new Route('', '', fn(): null => null);
+    $extractMethod = ExtractedEndpointData::fromRoute($route);
+
+    $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
+
+    $result = $laravelDataExtractor->extract();
+
+    expect($result)->toBeEmpty();
+});
+
 test('extract class laravel data from param from more type', function (): void {
     $route = new Route('', '', fn(string $id, int $number, float $price): null => null);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
