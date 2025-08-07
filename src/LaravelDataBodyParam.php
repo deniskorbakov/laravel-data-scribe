@@ -7,7 +7,6 @@ namespace DenisKorbakov\LaravelDataScribe;
 use DenisKorbakov\LaravelDataScribe\Extractors\ParametersExtractor;
 use DenisKorbakov\LaravelDataScribe\Params\BodyParams;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
-use Knuckles\Scribe\Extracting\ParsesValidationRules;
 use Knuckles\Scribe\Extracting\Strategies\Strategy;
 use ReflectionParameter;
 use Spatie\LaravelData\Data;
@@ -15,8 +14,6 @@ use Spatie\LaravelData\Data;
 /** Generates Laravel Data request body parameters from endpoint data */
 final class LaravelDataBodyParam extends Strategy
 {
-    use ParsesValidationRules;
-
     /**
      * @param ExtractedEndpointData $endpointData Endpoint method and parameters
      * @param array<string, mixed> $settings
