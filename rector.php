@@ -15,6 +15,7 @@ use Rector\Config\RectorConfig;
 use Rector\DeadCode\Rector\ClassMethod\RemoveEmptyClassMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPrivateMethodRector;
 use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPromotedPropertyRector;
+use Rector\DeadCode\Rector\ClassMethod\RemoveUnusedPublicMethodParameterRector;
 use Rector\DeadCode\Rector\Node\RemoveNonExistingVarAnnotationRector;
 use Rector\DeadCode\Rector\Property\RemoveUnusedPrivatePropertyRector;
 use Rector\Php80\Rector\Class_\ClassPropertyAssignToConstructorPromotionRector;
@@ -66,6 +67,7 @@ return static function (RectorConfig $rectorConfig): void {
         CompactToVariablesRector::class,
         RemoveEmptyClassMethodRector::class,
         RemoveNonExistingVarAnnotationRector::class,
+        RemoveUnusedPublicMethodParameterRector::class,
     ]);
 
     $rectorConfig->sets([
