@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures\Controllers;
 
+use Knuckles\Scribe\Attributes\BodyParam;
 use Tests\Fixtures\LaravelData\AttributeRules;
 use Tests\Fixtures\LaravelData\CustomAttributeRules;
 use Tests\Fixtures\LaravelData\ManualRules;
@@ -55,6 +56,22 @@ final class LaravelDataController
     }
 
     public function requestAndEmptyLaravelData(RequestRules $requestRules, ParentClassLaravelData $parentClassLaravelData): void
+    {
+    }
+
+    #[BodyParam('name', 'int', 'updated name', required: false, example: 1)]
+    public function updateOneBodyParamsFromAttr(AttributeRules $attributeRules): void
+    {
+    }
+
+    #[BodyParam('phone', 'bool', 'updated phone', required: true, example: true)]
+    #[BodyParam('password', 'string', 'updated password', true, 'pass', null, false)]
+    public function updateAllBodyParamsFromAttr(CustomAttributeRules $customAttributeRules): void
+    {
+    }
+
+    #[BodyParam('new', 'string', 'add new params', required: false, example: 'param')]
+    public function addBodyParamsFromAttr(ManualRules $manualRules): void
     {
     }
 }
