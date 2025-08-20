@@ -6,18 +6,12 @@ use DenisKorbakov\LaravelDataScribe\LaravelDataBodyParam;
 use Illuminate\Routing\Route;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Knuckles\Scribe\Tools\DocumentationConfig;
-use Tests\Fixtures\LaravelData\AttributeRules;
-use Tests\Fixtures\LaravelData\CustomAttributeRules;
-use Tests\Fixtures\LaravelData\ManualRules;
-use Tests\Fixtures\LaravelData\NoRules;
-use Tests\Fixtures\ParentClasses\ParentClassLaravelData;
-use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
-use Tests\Fixtures\Requests\RequestRules;
+use Tests\Fixtures\Controllers\LaravelDataController;
 
 mutates(LaravelDataBodyParam::class);
 
-test('generate doc body params from method with AttributeRules', function (): void {
-    $route = new Route('', '', fn(AttributeRules $attributeRules): null => null);
+test('generate doc body params from method with attributeRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'attributeRules']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -28,8 +22,8 @@ test('generate doc body params from method with AttributeRules', function (): vo
     expect($result)->toEqual($this->getParamsAttributeRules());
 });
 
-test('generate doc body params from method with CustomAttributeRules', function (): void {
-    $route = new Route('', '', fn(CustomAttributeRules $attributeRules): null => null);
+test('generate doc body params from method with customAttributeRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'customAttributeRules']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -40,8 +34,8 @@ test('generate doc body params from method with CustomAttributeRules', function 
     expect($result)->toEqual($this->getParamsCustomAttributeRules());
 });
 
-test('generate doc body params from method with ManualRules', function (): void {
-    $route = new Route('', '', fn(ManualRules $attributeRules): null => null);
+test('generate doc body params from method with manualRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'manualRules']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -52,8 +46,8 @@ test('generate doc body params from method with ManualRules', function (): void 
     expect($result)->toEqual($this->getParamsManualRules());
 });
 
-test('generate doc body params from method with NoRules', function (): void {
-    $route = new Route('', '', fn(NoRules $attributeRules): null => null);
+test('generate doc body params from method with noRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'noRules']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -64,8 +58,8 @@ test('generate doc body params from method with NoRules', function (): void {
     expect($result)->toEqual($this->getParamsNoRules());
 });
 
-test('generate doc body params from method with WithoutParentClassLaravelData', function (): void {
-    $route = new Route('', '', fn(WithoutParentClassLaravelData $attributeRules): null => null);
+test('generate doc body params from method with withoutLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'withoutLaravelData']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -76,8 +70,8 @@ test('generate doc body params from method with WithoutParentClassLaravelData', 
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from method with ParentClassLaravelData', function (): void {
-    $route = new Route('', '', fn(ParentClassLaravelData $attributeRules): null => null);
+test('generate doc body params from method with emptyLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'emptyLaravelData']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -88,8 +82,8 @@ test('generate doc body params from method with ParentClassLaravelData', functio
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from method with empty parameters', function (): void {
-    $route = new Route('', '', fn(): null => null);
+test('generate doc body params from method with empty emptyMethod', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'emptyMethod']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -100,8 +94,8 @@ test('generate doc body params from method with empty parameters', function (): 
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from method with more parameters', function (): void {
-    $route = new Route('', '', fn(string $id, int $number, float $price): null => null);
+test('generate doc body params from method with more moreParameters', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'moreParameters']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -112,8 +106,8 @@ test('generate doc body params from method with more parameters', function (): v
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from method with RequestRules', function (): void {
-    $route = new Route('', '', fn(RequestRules $requestRules): null => null);
+test('generate doc body params from method with requestRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'requestRules']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
@@ -124,8 +118,8 @@ test('generate doc body params from method with RequestRules', function (): void
     expect($result)->toBeEmpty();
 });
 
-test('generate doc body params from method with RequestRules and AttributeRules', function (): void {
-    $route = new Route('', '', fn(RequestRules $requestRules, AttributeRules $attributeRules): null => null);
+test('generate doc body params from method with requestAndLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'requestAndLaravelData']);
     $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
 
     $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));

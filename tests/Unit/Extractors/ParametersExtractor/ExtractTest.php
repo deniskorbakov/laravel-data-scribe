@@ -7,14 +7,13 @@ namespace Tests\Unit\Extractors\ParametersExtractor;
 use DenisKorbakov\LaravelDataScribe\Extractors\ParametersExtractor;
 use Illuminate\Routing\Route;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
+use Tests\Fixtures\Controllers\LaravelDataController;
 use Tests\Fixtures\ParentClasses\ParentClassLaravelData;
-use Tests\Fixtures\ParentClasses\WithoutParentClassLaravelData;
-use Tests\Fixtures\Requests\RequestRules;
 
 mutates(ParametersExtractor::class);
 
-test('extract class laravel data from param ParentClassLaravelData', function (): void {
-    $route = new Route('', '', fn(ParentClassLaravelData $parentClassLaravelData): null => null);
+test('extract class laravel data from emptyLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'emptyLaravelData']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
@@ -24,8 +23,8 @@ test('extract class laravel data from param ParentClassLaravelData', function ()
     expect($result)->toBe(ParentClassLaravelData::class);
 });
 
-test('extract class laravel data from param from WithoutParentClassLaravelData', function (): void {
-    $route = new Route('', '', fn(WithoutParentClassLaravelData $parentClassLaravelData): null => null);
+test('extract class laravel data from withoutLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'withoutLaravelData']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
@@ -35,8 +34,8 @@ test('extract class laravel data from param from WithoutParentClassLaravelData',
     expect($result)->toBeEmpty();
 });
 
-test('extract class laravel data from param from empty arg route', function (): void {
-    $route = new Route('', '', fn(): null => null);
+test('extract class laravel data from emptyMethod', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'emptyMethod']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
@@ -46,8 +45,8 @@ test('extract class laravel data from param from empty arg route', function (): 
     expect($result)->toBeEmpty();
 });
 
-test('extract class laravel data from param from more type', function (): void {
-    $route = new Route('', '', fn(string $id, int $number, float $price): null => null);
+test('extract class laravel data from moreParameters', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'moreParameters']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
@@ -57,8 +56,8 @@ test('extract class laravel data from param from more type', function (): void {
     expect($result)->toBeEmpty();
 });
 
-test('extract class laravel data from param from RequestRules', function (): void {
-    $route = new Route('', '', fn(RequestRules $request): null => null);
+test('extract class laravel data from requestRules', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'requestRules']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
@@ -68,8 +67,8 @@ test('extract class laravel data from param from RequestRules', function (): voi
     expect($result)->toBeEmpty();
 });
 
-test('extract class laravel data from param from RequestRules and ParentClassLaravelData', function (): void {
-    $route = new Route('', '', fn(RequestRules $request, ParentClassLaravelData $parentClassLaravelData): null => null);
+test('extract class laravel data from requestAndEmptyLaravelData', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'requestAndEmptyLaravelData']);
     $extractMethod = ExtractedEndpointData::fromRoute($route);
 
     $laravelDataExtractor = new ParametersExtractor($extractMethod->method->getParameters());
