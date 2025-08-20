@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace DenisKorbakov\LaravelDataScribe;
 
-use DenisKorbakov\LaravelDataScribe\Extractors\ParametersExtractor;
-use DenisKorbakov\LaravelDataScribe\Params\BodyParams;
+use DenisKorbakov\LaravelDataScribe\Documentations\BodyParamDoc;
+use DenisKorbakov\LaravelDataScribe\Extractors\Attributes\BodyParamAttributeExtract;
+use DenisKorbakov\LaravelDataScribe\Extractors\Classes\LaravelDataClassExtract;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
 use Knuckles\Scribe\Extracting\Strategies\Strategy;
+use ReflectionAttribute;
 use ReflectionParameter;
 use Spatie\LaravelData\Data;
 
@@ -23,14 +25,14 @@ final class LaravelDataBodyParam extends Strategy
     {
         /** @var ReflectionParameter[] $parameters */
         $parameters = $endpointData->method?->getParameters();
+        /** @var ReflectionAttribute[] $attributes */
+        $attributes = $endpointData->method?->getAttributes();
 
         /** @var class-string<Data> $laravelDataClass */
-        $laravelDataClass = (new ParametersExtractor($parameters))->extract();
+        $laravelDataClass = (new LaravelDataClassExtract($parameters))->extract();
+        /** @var array<string, string>  $bodyParamAttribute */
+        $bodyParamAttribute = (new BodyParamAttributeExtract($attributes))->extract();
 
-        if (empty($laravelDataClass)) {
-            return null;
-        }
-
-        return (new BodyParams($laravelDataClass, $this->config))->generate();
+        return (new BodyParamDoc($laravelDataClass, $bodyParamAttribute, $this->config))->generate();
     }
 }
