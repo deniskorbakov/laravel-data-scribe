@@ -14,25 +14,47 @@ use Tests\Fixtures\Requests\RequestRules;
 
 final class LaravelDataController
 {
-    public function attributeRules(AttributeRules $attributeRules): void {}
+    public function attributeRules(AttributeRules $attributeRules): void
+    {
+    }
 
-    public function customAttributeRules(CustomAttributeRules $customAttributeRules): void {}
+    public function customAttributeRules(CustomAttributeRules $customAttributeRules): void
+    {
+    }
 
-    public function manualRules(ManualRules $manualRules): void {}
+    public function manualRules(ManualRules $manualRules): void
+    {
+    }
 
-    public function noRules(NoRules $noRules): void {}
+    public function noRules(NoRules $noRules): void
+    {
+    }
 
-    public function withoutLaravelData(WithoutParentClassLaravelData $withoutParentClassLaravelData): void {}
+    public function withoutLaravelData(WithoutParentClassLaravelData $withoutParentClassLaravelData): void
+    {
+    }
 
-    public function emptyLaravelData(ParentClassLaravelData $parentClassLaravelData): void {}
+    public function emptyLaravelData(ParentClassLaravelData $parentClassLaravelData): void
+    {
+    }
 
-    public function emptyMethod(): void {}
+    public function emptyMethod(): void
+    {
+    }
 
-    public function moreParameters(string $id, int $number, float $price): void {}
+    public function moreParameters(string $id, int $number, float $price): void
+    {
+    }
 
-    public function requestRules(RequestRules $requestRules): void {}
+    public function requestRules(RequestRules $requestRules): void
+    {
+    }
 
-    public function requestAndLaravelData(RequestRules $requestRules, AttributeRules $attributeRules): void {}
+    public function requestAndLaravelData(RequestRules $requestRules, AttributeRules $attributeRules): void
+    {
+    }
 
-    public function requestAndEmptyLaravelData(RequestRules $requestRules, ParentClassLaravelData $parentClassLaravelData): void {}
+    public function requestAndEmptyLaravelData(RequestRules $requestRules, ParentClassLaravelData $parentClassLaravelData): void
+    {
+    }
 }
