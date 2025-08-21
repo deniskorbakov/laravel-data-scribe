@@ -6,6 +6,6 @@ namespace DenisKorbakov\LaravelDataScribe\Extractors\Attributes;
 
 interface AttributeExtract
 {
-    /** @return array<string, mixed> */
+    /** @return array<int, array<string, mixed>> */
     public function extract(): array;
 }
