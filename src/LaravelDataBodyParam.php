@@ -30,9 +30,9 @@ final class LaravelDataBodyParam extends Strategy
 
         /** @var class-string<Data> $laravelDataClass */
         $laravelDataClass = (new LaravelDataClassExtract($parameters))->extract();
-        /** @var array<string, string>  $bodyParamAttribute */
-        $bodyParamAttribute = (new BodyParamAttributeExtract($attributes))->extract();
+        /** @var array<int, array<string, mixed>>  $bodyParamAttribute */
+        $attributeArguments = (new BodyParamAttributeExtract($attributes))->extract();
 
-        return (new BodyParamDoc($laravelDataClass, $bodyParamAttribute, $this->config))->generate();
+        return (new BodyParamDoc($laravelDataClass, $attributeArguments, $this->config))->generate();
     }
 }
