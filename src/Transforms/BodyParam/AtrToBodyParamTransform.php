@@ -5,8 +5,9 @@ declare(strict_types=1);
 namespace DenisKorbakov\LaravelDataScribe\Transforms\BodyParam;
 
 use Knuckles\Scribe\Attributes\BodyParam;
+use TypeError;
 
-final readonly class AtrTBodyParamTransform implements BodyParamTransform
+final readonly class AtrToBodyParamTransform implements BodyParamTransform
 {
     /** @param array<int, array<string, mixed>> $attributeArguments */
     public function __construct(
@@ -19,9 +20,13 @@ final readonly class AtrTBodyParamTransform implements BodyParamTransform
         $argumentsDoc = [];
 
         foreach ($this->attributeArguments as $arguments) {
-            $bodyParam = new BodyParam(...$arguments);
+            try {
+                $bodyParam = new BodyParam(...$arguments);
 
-            $argumentsDoc[$bodyParam->name] = $bodyParam->toArray();
+                $argumentsDoc[$bodyParam->name] = $bodyParam->toArray();
+            } catch (TypeError) {
+                continue;
+            }
         }
 
         return $argumentsDoc;
