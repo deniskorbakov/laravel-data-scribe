@@ -11,7 +11,6 @@ use Spatie\LaravelData\Data;
 
 final readonly class BodyParamDoc implements Doc
 {
-
     /**
      * @param  class-string<Data> $laravelDataClass
      * @param array<int, array<string, mixed>> $attributeArguments
@@ -20,7 +19,8 @@ final readonly class BodyParamDoc implements Doc
         public string $laravelDataClass,
         public array $attributeArguments,
         public DocumentationConfig $config,
-    ) {}
+    ) {
+    }
 
     /** @return ?array<string, array<string, mixed>> */
     public function generate(): ?array

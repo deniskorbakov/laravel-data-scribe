@@ -8,7 +8,6 @@ use DenisKorbakov\LaravelDataScribe\Documentations\BodyParamDoc;
 use DenisKorbakov\LaravelDataScribe\Extractors\Attributes\BodyParamAttributeExtract;
 use DenisKorbakov\LaravelDataScribe\Extractors\Classes\LaravelDataClassExtract;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
-use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Extracting\Strategies\Strategy;
 use ReflectionAttribute;
 use ReflectionParameter;

@@ -259,4 +259,3 @@ test('generate doc body params from empty data', function (): void {
 
     expect($result)->toBeEmpty();
 });
-

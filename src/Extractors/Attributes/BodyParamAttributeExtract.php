@@ -22,7 +22,7 @@ final readonly class BodyParamAttributeExtract implements AttributeExtract
         $arguments = [];
 
         foreach ($this->attributes as $attribute) {
-            if(!is_a($attribute->getName(), BodyParam::class, true)) {
+            if (!is_a($attribute->getName(), BodyParam::class, true)) {
                 continue;
             }
 

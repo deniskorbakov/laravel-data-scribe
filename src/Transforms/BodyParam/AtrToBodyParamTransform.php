@@ -12,7 +12,8 @@ final readonly class AtrToBodyParamTransform implements BodyParamTransform
     /** @param array<int, array<string, mixed>> $attributeArguments */
     public function __construct(
         public array $attributeArguments,
-    ) {}
+    ) {
+    }
 
     /** @return array<string, array<string, mixed>> */
     public function transform(): array
