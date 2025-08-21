@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace DenisKorbakov\LaravelDataScribe\Documentations;
 
 use DenisKorbakov\LaravelDataScribe\Params\BodyParams;
-use DenisKorbakov\LaravelDataScribe\Transforms\BodyParam\AtrTBodyParamTransform;
+use DenisKorbakov\LaravelDataScribe\Transforms\BodyParam\AtrToBodyParamTransform;
 use Knuckles\Scribe\Tools\DocumentationConfig;
 
 final readonly class BodyParamDoc implements Doc
@@ -21,9 +21,10 @@ final readonly class BodyParamDoc implements Doc
         if (empty($this->laravelDataClass)) {
             return null;
         }
-        $attributesDoc = (new AtrTBodyParamTransform($this->attributeArguments))->transform();
+
+        $attributesDoc = (new AtrToBodyParamTransform($this->attributeArguments))->transform();
         $bodyParamsDoc = (new BodyParams($this->laravelDataClass, $this->config))->generate();
 
-        return array_merge($attributesDoc, $bodyParamsDoc);
+        return array_merge($bodyParamsDoc, $attributesDoc);
     }
 }
