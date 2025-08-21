@@ -8,6 +8,7 @@ use DenisKorbakov\LaravelDataScribe\Documentations\BodyParamDoc;
 use DenisKorbakov\LaravelDataScribe\Extractors\Attributes\BodyParamAttributeExtract;
 use DenisKorbakov\LaravelDataScribe\Extractors\Classes\LaravelDataClassExtract;
 use Knuckles\Camel\Extraction\ExtractedEndpointData;
+use Knuckles\Scribe\Attributes\BodyParam;
 use Knuckles\Scribe\Extracting\Strategies\Strategy;
 use ReflectionAttribute;
 use ReflectionParameter;
@@ -25,12 +26,12 @@ final class LaravelDataBodyParam extends Strategy
     {
         /** @var ReflectionParameter[] $parameters */
         $parameters = $endpointData->method?->getParameters();
-        /** @var ReflectionAttribute[] $attributes */
+        /** @var ReflectionAttribute<object>[] $attributes */
         $attributes = $endpointData->method?->getAttributes();
 
         /** @var class-string<Data> $laravelDataClass */
         $laravelDataClass = (new LaravelDataClassExtract($parameters))->extract();
-        /** @var array<int, array<string, mixed>>  $bodyParamAttribute */
+        /** @var array<int, array<string, mixed>>  $attributeArguments */
         $attributeArguments = (new BodyParamAttributeExtract($attributes))->extract();
 
         return (new BodyParamDoc($laravelDataClass, $attributeArguments, $this->config))->generate();

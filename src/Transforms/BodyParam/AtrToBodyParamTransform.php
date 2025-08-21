@@ -21,9 +21,13 @@ final readonly class AtrToBodyParamTransform implements BodyParamTransform
 
         foreach ($this->attributeArguments as $arguments) {
             try {
+                /** @phpstan-ignore-next-line */
                 $bodyParam = new BodyParam(...$arguments);
 
-                $argumentsDoc[$bodyParam->name] = $bodyParam->toArray();
+                /** @var array<string, mixed> $dataDoc */
+                $dataDoc = $bodyParam->toArray();
+
+                $argumentsDoc[$bodyParam->name] = $dataDoc;
             } catch (TypeError) {
                 continue;
             }
