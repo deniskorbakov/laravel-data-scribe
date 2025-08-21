@@ -139,5 +139,29 @@ test('generate doc body params from method with updateOneBodyParamsFromAttr', fu
         $this->deleteExampleKey($result);
     }
 
-    expect($result)->toEqual($this->getParamsAttributeRules());
+    expect($result)->toEqual($this->getParamsUpdateOneBodyParamsFromAttr());
+});
+
+test('generate doc body params from method with updateAllBodyParamsFromAttr', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'updateAllBodyParamsFromAttr']);
+    $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
+
+    $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
+    if (is_array($result)) {
+        $this->deleteExampleKey($result);
+    }
+
+    expect($result)->toEqual($this->getParamsUpdateAllBodyParamsFromAttr());
+});
+
+test('generate doc body params from method with addBodyParamsFromAttr', function (): void {
+    $route = new Route('', '', [LaravelDataController::class, 'addBodyParamsFromAttr']);
+    $laravelDataBodyParam = new LaravelDataBodyParam(new DocumentationConfig());
+
+    $result = $laravelDataBodyParam(ExtractedEndpointData::fromRoute($route));
+    if (is_array($result)) {
+        $this->deleteExampleKey($result);
+    }
+
+    expect($result)->toEqual($this->getParamsAddBodyParamsFromAttr());
 });
