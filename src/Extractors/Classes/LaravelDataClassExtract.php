@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace DenisKorbakov\LaravelDataScribe\Extractors;
+namespace DenisKorbakov\LaravelDataScribe\Extractors\Classes;
 
 use DenisKorbakov\LaravelDataScribe\Resolvers\ParentClassResolver;
 use ReflectionNamedType;
@@ -10,7 +10,7 @@ use ReflectionParameter;
 use Spatie\LaravelData\Data;
 
 /** Extracts Laravel Data class from method parameters */
-final readonly class ParametersExtractor
+final readonly class LaravelDataClassExtract implements ClassExtract
 {
     /** @param ReflectionParameter[] $parameters Method to analyze */
     public function __construct(

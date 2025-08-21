@@ -20,6 +20,21 @@ abstract class TestCase extends BaseTestCase
         data_forget($array, '*.example');
     }
 
+    protected function getParamsAddBodyParamsFromAttr(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsAddBodyParamsFromAttr.php';
+    }
+
+    protected function getParamsUpdateAllBodyParamsFromAttr(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsUpdateAllBodyParamsFromAttr.php';
+    }
+
+    protected function getParamsUpdateOneBodyParamsFromAttr(): array
+    {
+        return include __DIR__ . '/Fixtures/BodyParams/ParamsUpdateOneBodyParamsFromAttr.php';
+    }
+
     protected function getParamsAttributeRules(): array
     {
         return include __DIR__ . '/Fixtures/BodyParams/ParamsAttributeRules.php';

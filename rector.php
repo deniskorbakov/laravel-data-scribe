@@ -23,6 +23,7 @@ use Rector\Php81\Rector\Property\ReadOnlyPropertyRector;
 use Rector\Privatization\Rector\ClassMethod\PrivatizeFinalClassMethodRector;
 use Rector\Privatization\Rector\Property\PrivatizeFinalClassPropertyRector;
 use Rector\Set\ValueObject\SetList;
+use Rector\Strict\Rector\Empty_\DisallowedEmptyRuleFixerRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\AddVoidReturnTypeWhereNoReturnRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromReturnDirectArrayRector;
 use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNewArrayRector;
@@ -64,6 +65,7 @@ return static function (RectorConfig $rectorConfig): void {
     ]);
 
     $rectorConfig->skip([
+        DisallowedEmptyRuleFixerRector::class,
         CompactToVariablesRector::class,
         RemoveEmptyClassMethodRector::class,
         RemoveNonExistingVarAnnotationRector::class,

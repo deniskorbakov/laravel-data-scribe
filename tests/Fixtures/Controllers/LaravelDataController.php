@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace Tests\Fixtures\Controllers;
 
+use Knuckles\Scribe\Attributes\BodyParam;
+use Tests\Fixtures\Enums\ExampleEnum;
 use Tests\Fixtures\LaravelData\AttributeRules;
 use Tests\Fixtures\LaravelData\CustomAttributeRules;
 use Tests\Fixtures\LaravelData\ManualRules;
@@ -55,6 +57,22 @@ final class LaravelDataController
     }
 
     public function requestAndEmptyLaravelData(RequestRules $requestRules, ParentClassLaravelData $parentClassLaravelData): void
+    {
+    }
+
+    #[BodyParam('name', 'int', 'updated name', false, 1, ['one', 'two'], true)]
+    public function updateOneBodyParamsFromAttr(AttributeRules $attributeRules): void
+    {
+    }
+
+    #[BodyParam('phone', 'bool', 'updated phone', required: true, example: true)]
+    #[BodyParam('password', 'string', 'updated password', true, 'pass', null, false)]
+    public function updateAllBodyParamsFromAttr(CustomAttributeRules $customAttributeRules): void
+    {
+    }
+
+    #[BodyParam('new', 'string', 'add new params', required: false, example: 'param', enum: ExampleEnum::class)]
+    public function addBodyParamsFromAttr(ManualRules $manualRules): void
     {
     }
 }
