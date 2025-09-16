@@ -13,7 +13,7 @@ By default, [scribe](https://github.com/knuckleswtf/scribe) cannot generate docu
 | Scribe Support                | Description                            |     Plugin Name      | Status |
 |:------------------------------|:---------------------------------------|:--------------------:|:------:|
 | ``Body Parameters``           | Generate Body Params from laravel-data | LaravelDataBodyParam |   ✅    |
-| ``Attribute Body Parameters`` | Generate Body Params Attribute         | LaravelDataBodyParam |   ✅    |
+| ``Attr Body Parameters`` | Generate Body Params Attribute         | LaravelDataBodyParam |   ✅    |
 | ``Responses``                 | Generate Response from laravel-data    |          🚫          |   ❌    |
 | ``Custom Validation``         | Support Custom Rules in laravel-data   |          🚫          |   ❌    |
 
