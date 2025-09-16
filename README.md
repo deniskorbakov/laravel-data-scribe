@@ -10,11 +10,14 @@
 
 By default, [scribe](https://github.com/knuckleswtf/scribe) cannot generate documentation from [laravel-data](https://github.com/spatie/laravel-data), so I propose solutions in the form of this package with plugins
 
-| Scribe Support        | Description                                |     Plugin Name      | Status |
-|:----------------------|:-------------------------------------------|:--------------------:|:------:|
-| ``Body Parameters``   | Generate Body Params from laravel-data     | LaravelDataBodyParam |   ✅    |
-| ``Responses``         | Generate Response from laravel-data        |          🚫          |   ❌    |
-| ``Custom Validation`` | Support Custom Rules in laravel-data       |          🚫          |   ❌    |
+| Scribe Support                | Description                            |     Plugin Name      | Status |
+|:------------------------------|:---------------------------------------|:--------------------:|:------:|
+| ``Body Parameters``           | Generate Body Params from laravel-data | LaravelDataBodyParam |   ✅    |
+| ``Attribute Body Parameters`` | Generate Body Params Attribute         | LaravelDataBodyParam |   ✅    |
+| ``Responses``                 | Generate Response from laravel-data    |          🚫          |   ❌    |
+| ``Custom Validation``         | Support Custom Rules in laravel-data   |          🚫          |   ❌    |
+
+>Attribute Body Parameters - attribute has higher priority than body param from properties
 
 ## 📝 Getting Started
 
