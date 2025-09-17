@@ -7,7 +7,7 @@
         "plugin",
         "php"
     ],
-    "type": "libarary",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
