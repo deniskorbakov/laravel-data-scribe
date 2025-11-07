@@ -18,6 +18,8 @@ abstract class TestCase extends BaseTestCase
     protected function deleteExampleKey(array &$array): void
     {
         data_forget($array, '*.example');
+        data_forget($array, '*.sometimes');
+        data_forget($array, '*.deprecated');
     }
 
     protected function getParamsAddBodyParamsFromAttr(): array
