@@ -24,7 +24,7 @@
       "pestphp/pest": "^3.8",
       "phpstan/phpstan": "^2.1",
       "rector/rector": "*",
-      "squizlabs/php_codesniffer": "^3.13",
+      "squizlabs/php_codesniffer": "^3.13 || ^4.0",
       "slevomat/coding-standard": "^8.20",
       "orchestra/testbench": "^10.4"
     },
